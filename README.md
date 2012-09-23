@@ -33,7 +33,6 @@ Reference the [wiki](https://help.ubuntu.com/community/Grub2) for tuning the fol
 * default['sol']['grub']['hidden_timeout']
 * default['sol']['grub']['hidden_timeout_quiet']
 * default['sol']['grub']['timeout']
-
 * default['sol']['serial']['bios_speed'] - Serial port mode setting.  BIOS speed should match this value.
 * default['sol']['serial']['speed'] - The speed of the serial link in bits per second.
 * default['sol']['serial']['unit'] - The number of the serial port, counting from zero.
