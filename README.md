@@ -5,6 +5,8 @@ Installs/Configures sol (Serial Over LAN)
 
 Configures GRUB to redirect the serial port to ttyS1 (configurable).  Intended for serial port logging via [conserver](http://www.conserver.com) or similar.
 
+To prevent [Yak](http://en.wiktionary.org/wiki/yak_shaving) shaving, only implemented our current requirements.  Contributions welcome.
+
 Requirements
 ============
 
