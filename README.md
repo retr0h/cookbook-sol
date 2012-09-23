@@ -21,6 +21,8 @@ Installs/Configures reboot-handler
 Attributes
 ==========
 
+The following defaults were tested against IPMI v2.0 Compliant KVM on a Quanta S99k.
+
 * default['sol']['tty']['conf'] - Path to `node['sol']['tty']['name']`'s getty config file.
 * default['sol']['tty']['name'] - Name of tty to use.
 
@@ -32,14 +34,18 @@ Reference the [wiki](https://help.ubuntu.com/community/Grub2) for tuning the fol
 * default['sol']['grub']['hidden_timeout_quiet']
 * default['sol']['grub']['timeout']
 
-The following serial port settings were tuned via an IPMI v2.0 Compliant KVM on a Quanta S99k.
-
 * default['sol']['serial']['bios_speed'] - Serial port mode setting.  BIOS speed should match this value.
 * default['sol']['serial']['speed'] - The speed of the serial link in bits per second.
 * default['sol']['serial']['unit'] - The number of the serial port, counting from zero.
 * default['sol']['serial']['word'] - The (byte or character) of data you send or receive.
 * default['sol']['serial']['parity'] - The number of parity bits.
 * default['sol']['serial']['stop'] -  The number of stop bit-times.
+
+Was able to successfully redirect IPMI v2.0 over iDRAC 7 on PowerEdge R720xd with:
+
+* default['sol']['tty']['name'] = "ttyS0"
+* default['sol']['serial']['bios_speed'] = "115200"
+* default['sol']['serial']['speed'] = "115200"
 
 Usage
 =====
