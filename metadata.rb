@@ -7,8 +7,4 @@ version          "0.1.0"
 
 recipe           "sol", "Installs/Configures sol"
 
-%w{ ubuntu }.each do |os|
-  supports os
-end
-
-depends "reboot-handler"
+supports         "ubuntu", "= 12.04"
