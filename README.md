@@ -21,7 +21,7 @@ Installs/Configures reboot-handler
 Attributes
 ==========
 
-The following defaults were tested against IPMI v2.0 Compliant KVM on a Quanta S99k.
+The following defaults were tested against IPMI v2.0 compliant KVM on a Quanta S99k.
 
 * default['sol']['tty']['conf'] - Path to `node['sol']['tty']['name']`'s getty config file.
 * default['sol']['tty']['name'] - Name of tty to use.
