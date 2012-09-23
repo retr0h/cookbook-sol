@@ -33,13 +33,12 @@ Reference the [wiki](https://help.ubuntu.com/community/Grub2) for tuning the fol
 
 The following serial port settings were tuned via an IPMI v2.0 Compliant KVM on a Quanta S99k.
 
+* default['sol']['serial']['bios_speed'] - Serial port mode setting.  BIOS speed should match this value.
 * default['sol']['serial']['speed'] - The speed of the serial link in bits per second.
 * default['sol']['serial']['unit'] - The number of the serial port, counting from zero.
 * default['sol']['serial']['word'] - The (byte or character) of data you send or receive.
 * default['sol']['serial']['parity'] - The number of parity bits.
 * default['sol']['serial']['stop'] -  The number of stop bit-times.
-
-* default['sol']['bios']['serial_port_mode'] - Serial port mode setting.  BIOS speed should match this value.
 
 Usage
 =====

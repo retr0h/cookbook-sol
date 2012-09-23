@@ -36,5 +36,5 @@ GRUB_TERMINAL="console serial"
 # Uncomment to get a beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
 
-GRUB_CMDLINE_LINUX="text console=tty0 console=<%= node['sol']['tty']['name'] %>,<%= node['sol']['bios']['serial_port_mode'] %>"
+GRUB_CMDLINE_LINUX="text console=tty0 console=<%= node['sol']['tty']['name'] %>,<%= node['sol']['serial']['bios_speed'] %>n8"
 GRUB_SERIAL_COMMAND="serial --speed=<%= node['sol']['serial']['speed'] %> --unit=<%= node['sol']['serial']['unit'] %> --word=<%= node['sol']['serial']['word'] %> --parity=<%= node['sol']['serial']['parity'] %> --stop=<%= node['sol']['serial']['stop'] %>"

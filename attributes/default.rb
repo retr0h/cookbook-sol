@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-default['sol']['tty']['conf'] = ::File.join ::File::SEPARATOR, "etc", "init", "#{node['sol']['tty']['name']}.conf"
 default['sol']['tty']['name'] = "ttyS1"
+default['sol']['tty']['conf'] = ::File.join ::File::SEPARATOR, "etc", "init", "#{node['sol']['tty']['name']}.conf"
 
 default['sol']['grub']['conf'] = ::File.join ::File::SEPARATOR, "etc", "default", "grub"
 default['sol']['grub']['default'] = "0"
@@ -27,10 +27,9 @@ default['sol']['grub']['hidden_timeout_quiet'] = "true"
 default['sol']['grub']['timeout'] = "10"
 default['sol']['grub']['cmdline_linux_default'] = "quiet"
 
+default['sol']['serial']['bios_speed'] = "115200"
 default['sol']['serial']['speed'] = "38400"
 default['sol']['serial']['unit'] = "0"
 default['sol']['serial']['word'] = "8"
 default['sol']['serial']['parity'] = "no"
 default['sol']['serial']['stop'] = "1"
-
-default['sol']['bios']['serial_port_mode'] = "115200n8"
