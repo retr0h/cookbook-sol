@@ -8,29 +8,49 @@ describe "sol::default" do
       chef_run.template("/etc/init/ttyS1.conf").should be_owned_by("root", "root")
     end
 
-    it "populates template" do
+    it "has ttyS1 getty" do
       chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
         %Q{ttyS1 - getty}
+    end
+
+    it "has ttyS1 comment" do
       chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
         %Q{# This service maintains a getty on ttyS1 from the point the system is}
+    end
+
+    it "has ttyS1 getty exec" do
       chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
         %Q{exec /sbin/getty -8 38400 ttyS1}
     end
   end
 
   describe "grub" do
-    it "populates template" do
+    it "has GRUB_DEFAULT" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_DEFAULT=0}
+    end
+
+    it "has GRUB_HIDDEN_TIMEOUT" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_HIDDEN_TIMEOUT=0}
+    end
+
+    it "has GRUB_HIDDEN_TIMEOUT_QUIET" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_HIDDEN_TIMEOUT_QUIET=true}
+    end
+
+    it "has GRUB_TIMEOUT" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_TIMEOUT=10}
-      #GRUB_CMDLINE_LINUX="BOOTIF=01-e8-9a-8f-91-a8-9e"
+    end
+
+    it "has GRUB_CMDLINE_LINUX" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8"}
+    end
+
+    it "has GRUB_SERIAL_COMMAND" do
       chef_run.should create_file_with_content "/etc/default/grub",
         %Q{GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"}
     end
@@ -41,6 +61,7 @@ describe "sol::default" do
 
     it "flags system to reboot" do
       #chef_run.node.run_state.inspect
+      pending "TODO: determine how to test this"
     end
   end
 end

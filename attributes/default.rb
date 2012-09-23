@@ -26,6 +26,7 @@ default['sol']['grub']['hidden_timeout'] = "0"
 default['sol']['grub']['hidden_timeout_quiet'] = "true"
 default['sol']['grub']['timeout'] = "10"
 default['sol']['grub']['cmdline_linux_default'] = "quiet"
+default['sol']['grub']['bootif'] = "eth0"
 
 default['sol']['serial']['bios_speed'] = "115200"
 default['sol']['serial']['speed'] = "38400"

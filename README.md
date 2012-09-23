@@ -29,7 +29,6 @@ Reference the [wiki](https://help.ubuntu.com/community/Grub2) for tuning the fol
 * default['sol']['grub']['hidden_timeout']
 * default['sol']['grub']['hidden_timeout_quiet']
 * default['sol']['grub']['timeout']
-* default['sol']['grub']['cmdline_linux_default'] 
 
 The following serial port settings were tuned via an IPMI v2.0 Compliant KVM on a Quanta S99k.
 
