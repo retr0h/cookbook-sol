@@ -1,3 +1,10 @@
+##
+# To properly run chefspec you must comment out the require line from
+# reboot-handler's recipes/default.rb.  Chefspec is unable to deal with
+# a file installed by another cookbook.
+#
+# TODO: Investigate this further.
+
 require "chefspec"
 
 describe "sol::default" do
