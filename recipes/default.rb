@@ -30,7 +30,6 @@ end
 
 ruby_block "setting reboot flag" do
   block do
-    puts "HERE"
     node.run_state['reboot'] = true
   end
 
