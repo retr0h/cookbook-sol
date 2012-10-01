@@ -45,15 +45,5 @@ describe "raid::megaraid" do
     it "copies old /var" do
       chef_run.should execute_command "rsync -a /var/* /var2/"
     end
-
-    it "mounts" do
-      pending "TODO: how to test this properly"
-      #mount "/var" do
-      #  device node['raid']['block_device']
-      #  fstype node['raid']['fs']
-
-      #  action :enable
-      #end
-    end
   end
 end

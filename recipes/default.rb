@@ -17,6 +17,23 @@
 # limitations under the License.
 #
 
+ruby_block "setting reboot flag" do
+  block do
+    node.run_state['reboot'] = true
+  end
+
+  action :nothing
+end
+
 unless node['raid']['configured']
   include_recipe "raid::megaraid" if node['raid']['type'] == "megaraid"
+end
+
+mount "/var" do
+  device node['raid']['block_device']
+  fstype node['raid']['fs']
+
+  action :enable
+
+  notifies :create, resources(:ruby_block => "setting reboot flag")
 end
