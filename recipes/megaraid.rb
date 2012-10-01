@@ -56,6 +56,9 @@ execute "adds spares" do
   notifies :create, resources(:ruby_block => "setting node attributes")
 end
 
+# Prepare the array for a /var pivot.  If we end up adding configuration of another raid device
+# to this cookbook, will probably move the following into a different recipe.
+
 execute "parted #{node['raid']['raw_device']} --script -- mklabel gpt"
 execute "parted #{node['raid']['raw_device']} --script -- mkpart primary #{node['raid']['fs']} 1 -1"
 execute "mkfs.#{node['raid']['fs']} #{node['raid']['block_device']}"

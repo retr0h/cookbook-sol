@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+# Tuned for a 12 disk Quanta S99k.
+
 default['raid']['lsi']['megaraid']['adapter'] = 0
 default['raid']['lsi']['megaraid']['enclosure_id'] = 245
 default['raid']['lsi']['megaraid']['disks'] = [[0,1,2,3], [4,5,6,7]]
