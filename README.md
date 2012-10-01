@@ -21,15 +21,18 @@ Attributes
 
 The following defaults were tested against a "LSI MegaRAID SAS 2108" on a Quanta S99k.
 
-* default['raid']['megaraid']['adapter'] - The adapter to use.
-* default['raid']['megaraid']['enclosure_id'] - The enclosures id.
-* default['raid']['megaraid']['disks'] - `Array` of `Array` of disks to configure (e.g. [[0,1],[2,3]]).
-* default['raid']['megaraid']['spares'] - `Array` of disks to configure as spares.
-* default['raid']['megaraid']['options'] - Array options (e.g. Write Back or stripe size).
+* default['raid']['lsi']['megaraid']['adapter'] - The adapter to use.
+* default['raid']['lsi']['megaraid']['enclosure_id'] - The enclosures id.
+* default['raid']['lsi']['megaraid']['disks'] - `Array` of `Array` of disks to configure (e.g. `[[0,1],[2,3]]`).
+* default['raid']['lsi']['megaraid']['spares'] - `Array` of disks to configure as spares.
+* default['raid']['lsi']['megaraid']['options'] - Array options (e.g. Write Back or stripe size).
 * default['raid']['raw_device'] - Array's raw device.
 * default['raid']['block_device'] - Array's block device.
 * default['raid']['mount'] - Array's mount point.
 * default['raid']['fs'] - Array's file system type.
+
+Configuration of the array depends on the status of `node['raid']['configured']`.
+If it exists the raid was configured successfully.  If it doesn't exist the cookbook will configure the array.
 
 Usage
 =====
