@@ -48,6 +48,11 @@ default
 
 Installs/Configures raid
 
+megaraid
+----
+
+Installs/Configures megaraid array
+
 License and Author
 ==================
 
