@@ -17,13 +17,6 @@
 # limitations under the License.
 #
 
-#root@o12r1:~# /usr/bin/lspci -m | /bin/grep -i "raid bus controller.*MegaRAID"
-#04:00.0 "RAID bus controller" "LSI Logic / Symbios Logic" "MegaRAID SAS 2108 [Liberator]" -r05 "LSI Logic / Symbios Logic" "MegaRAID SAS 9260-8i"
-
 unless node['raid']['configured']
-  include_recipe "raid::megaraid"
+  include_recipe "raid::megaraid" if node['raid']['type'] == "megaraid"
 end
-
-#if(node['raid']['controller']['vendor'] == "lsi" && node['raid']['controller']['type'] == "megaraid")
-#   include_recipe "megaraid"
-#end
