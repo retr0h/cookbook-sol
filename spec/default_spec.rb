@@ -67,8 +67,10 @@ describe "sol::default" do
     end
 
     it "flags system to reboot" do
-      #chef_run.node.run_state.inspect
-      pending "TODO: determine how to test this"
+      #TODO: Still not happy with this
+      chef_run.resources.find{ |r| r.name == 'setting reboot flag' }.old_run_action(:create)
+
+      chef_run.node.run_state['reboot'].should be_true
     end
   end
 end
