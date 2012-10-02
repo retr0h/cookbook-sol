@@ -43,7 +43,7 @@ ruby_block "setting node attributes" do
 end
 
 execute "clearing adapter" do
-  command "#{node['megaraidcli']['wrapper']} -cfglddel -lall -a#{node['raid']['lsi']['megaraid']['adapter']}"
+  command "#{node['megaraidcli']['wrapper']} -cfglddel -lall -a#{node['raid']['lsi']['megaraid']['adapter']}; sleep 30"
 end
 
 execute "creating raid 1+0" do
@@ -65,10 +65,3 @@ execute "mkfs.#{node['raid']['fs']} #{node['raid']['block_device']}"
 execute "mkdir -p /var2"
 execute "mount #{node['raid']['block_device']} /var2"
 execute "rsync -a /var/* /var2/"
-
-mount "/var" do
-  device node['raid']['block_device']
-  fstype node['raid']['fs']
-
-  action :enable
-end
