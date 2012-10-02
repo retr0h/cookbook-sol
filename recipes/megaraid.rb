@@ -43,7 +43,7 @@ ruby_block "setting node attributes" do
 end
 
 execute "clearing adapter" do
-  command "#{node['megaraidcli']['wrapper']} -cfglddel -lall -a#{node['raid']['lsi']['megaraid']['adapter']}"
+  command "#{node['megaraidcli']['wrapper']} -cfglddel -lall -a#{node['raid']['lsi']['megaraid']['adapter']}; sleep 30"
 end
 
 execute "creating raid 1+0" do

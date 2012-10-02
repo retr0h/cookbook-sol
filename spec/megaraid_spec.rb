@@ -7,7 +7,7 @@ describe "raid::megaraid" do
 
   describe "array" do
     it "clears" do
-      chef_run.should execute_command "#{megacli} -cfglddel -lall -a#{adapter}"
+      chef_run.should execute_command "#{megacli} -cfglddel -lall -a#{adapter}; sleep 30"
     end
 
     it "creates" do
