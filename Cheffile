@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+site "http://community.opscode.com/api/v1"
+
+cookbook "reboot-handler"
+cookbook "megaraidcli"
+cookbook "parted"
+cookbook "rsync"
