@@ -1,13 +1,7 @@
-##
-# To properly run chefspec you must comment out the require line from
-# reboot-handler's recipes/default.rb.  Chefspec is unable to deal with
-# a file installed by another cookbook.
-#
-# TODO: Investigate this further.
-
 require "chefspec"
 
 describe "sol::default" do
+  before { Chef::Recipe.any_instance.stub(:include_recipe) }
   let(:chef_run) { ChefSpec::ChefRunner.new.converge "sol::default" }
 
   describe "ttyS1" do
