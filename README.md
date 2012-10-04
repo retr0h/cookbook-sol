@@ -53,6 +53,17 @@ megaraid
 
 Installs/Configures megaraid array
 
+Testing
+=====
+
+This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
+Rename the cookbook from cookbook-$name to $name until ChefSpec [#24](https://github.com/acrmp/chefspec/issues/24) gets resolved.
+
+    $ cd $name/
+    $ bundle
+    $ librarian-chef install
+    $ rspec
+
 License and Author
 ==================
 
