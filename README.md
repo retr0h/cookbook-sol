@@ -57,12 +57,12 @@ Testing
 =====
 
 This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
-Rename the cookbook from cookbook-$name to $name until ChefSpec [#24](https://github.com/acrmp/chefspec/issues/24) gets resolved.
 
-    $ cd $name/
+    $ cd $repo
     $ bundle
     $ librarian-chef install
-    $ rspec
+    $ ln -s ../ cookbooks/$short_repo_name # doesn't contain "cookbook-"
+    $ rspec cookbook/$short_repo_name
 
 License and Author
 ==================
