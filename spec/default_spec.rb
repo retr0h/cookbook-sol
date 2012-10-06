@@ -37,7 +37,7 @@ describe "sol::default" do
       Fauxhai.mock do |node|
         node['dmi'] = {
           "system" => {
-            "manufacturer" => "Quanta"
+            "manufacturer" => "Quanta " # Quanta has a trailing space
           }
         }
       end

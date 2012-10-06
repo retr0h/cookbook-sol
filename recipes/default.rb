@@ -26,6 +26,7 @@ module SolHelper
     return unless node['dmi']['system']['manufacturer']
 
     node['dmi']['system']['manufacturer'].
+      strip.                   # remove leading/trailing space
       gsub(/\s+/, "-").        # replace spaces with hyphens
       gsub(/[^a-zA-Z-]+/, ""). # strip non-alphanumeric/non-hyphens
       downcase
