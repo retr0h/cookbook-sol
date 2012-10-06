@@ -51,7 +51,7 @@ end
 
 getty = "#{value_for("tty", "name")}.conf"
 template ::File.join(node['sol']['tty']['dir'], getty) do
-  source "ttyS1.conf.erb"
+  source "tty.conf.erb"
   owner  "root"
   group  "root"
   mode   0644
