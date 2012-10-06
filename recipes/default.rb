@@ -33,9 +33,7 @@ module SolHelper
   end
 
   def value_for type, value
-    if node['sol'][manufacturer]
-      vendor_specific = node['sol'][manufacturer]
-    end
+    vendor_specific = node['sol'][manufacturer] if node['sol'][manufacturer]
 
     ((vendor_specific &&
       vendor_specific[type] &&
