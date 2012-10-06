@@ -79,6 +79,7 @@ This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing
     $ bundle
     $ librarian-chef install
     $ ln -s ../ cookbooks/$short_repo_name # doesn't contain "cookbook-"
+    $ foodcritic .
     $ rspec cookbooks/$short_repo_name
 
 License and Author
