@@ -17,8 +17,22 @@
 # limitations under the License.
 #
 
+# Able to successfully redirect IPMI v2.0 over iDRAC 7 on PowerEdge R720xd.
+
+default['sol']['dell-inc']['tty']['name'] = "ttyS0"
+default['sol']['dell-inc']['serial']['bios_speed'] = "115200"
+default['sol']['dell-inc']['serial']['speed'] = "115200"
+
+# Tested against IPMI v2.0 compliant KVM on a Quanta S99k.
+
+default['sol']['quanta']['tty']['name'] = "ttyS1"
+default['sol']['quanta']['serial']['bios_speed'] = "115200"
+default['sol']['quanta']['serial']['speed'] = "38400"
+
+# defaults
+
+default['sol']['tty']['dir'] = ::File.join ::File::SEPARATOR, "etc", "init"
 default['sol']['tty']['name'] = "ttyS1"
-default['sol']['tty']['conf'] = ::File.join ::File::SEPARATOR, "etc", "init", "#{node['sol']['tty']['name']}.conf"
 
 default['sol']['serial']['bios_speed'] = "115200"
 default['sol']['serial']['speed'] = "38400"

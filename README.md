@@ -21,9 +21,12 @@ Installs/Configures reboot-handler
 Attributes
 ==========
 
-The following defaults were tested against IPMI v2.0 compliant KVM on a Quanta S99k.
+Any of the attributes below can be overriden on a per manufacturer basis.  See usage.
 
+* default['sol']['dell-inc'] - `Hash` with Dell specific settings.
+* default['sol']['quanta'] - `Hash` with Quanta specific settings.
 * default['sol']['tty']['conf'] - Path to `node['sol']['tty']['name']`'s getty config file.
+* default['sol']['tty']['dir'] - Getty's directory.
 * default['sol']['tty']['name'] - Name of tty to use.
 * default['sol']['serial']['bios_speed'] - Serial port mode setting.  BIOS speed should match this value.
 * default['sol']['serial']['speed'] - The speed of the serial link in bits per second.
@@ -40,12 +43,6 @@ Reference the [wiki](https://help.ubuntu.com/community/Grub2) for tuning the fol
 * default['sol']['grub']['hidden_timeout_quiet']
 * default['sol']['grub']['timeout']
 
-Was able to successfully redirect IPMI v2.0 over iDRAC 7 on PowerEdge R720xd with:
-
-* default['sol']['tty']['name'] = "ttyS0"
-* default['sol']['serial']['bios_speed'] = "115200"
-* default['sol']['serial']['speed'] = "115200"
-
 Usage
 =====
 
@@ -53,6 +50,19 @@ Usage
 "run_list": [
     "recipe[curl]"
 ]
+```
+
+Configure a new manufacturer named "foo-bar".
+Overriding just the "bios_speed", and keeping the remaining defaults.
+
+```json
+"sol": {
+    "foo-bar": {
+        "serial": {
+            "bios_speed": "2600"
+        }
+    }
+}
 ```
 
 default
