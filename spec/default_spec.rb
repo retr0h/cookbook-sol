@@ -45,8 +45,14 @@ describe "sol::default" do
     let(:chef_run) { ChefSpec::ChefRunner.new.converge "sol::default" }
 
     describe "ttyS1" do
-      it "has proper modes" do
+      it "has proper owner" do
         chef_run.template("/etc/init/ttyS1.conf").should be_owned_by("root", "root")
+      end
+
+      it "has proper modes" do
+        m = chef_run.template("/etc/init/ttyS1.conf").mode
+
+        sprintf("%o", m).should == "644"
       end
 
       it "has getty" do
@@ -89,8 +95,14 @@ describe "sol::default" do
     let(:chef_run) { ChefSpec::ChefRunner.new.converge "sol::default" }
 
     describe "ttyS0" do
-      it "has proper modes" do
+      it "has proper owner" do
         chef_run.template("/etc/init/ttyS0.conf").should be_owned_by("root", "root")
+      end
+
+      it "has proper modes" do
+        m = chef_run.template("/etc/init/ttyS0.conf").mode
+
+        sprintf("%o", m).should == "644"
       end
     end
 
@@ -124,8 +136,14 @@ describe "sol::default" do
 
   describe "defaults" do
     describe "ttyS1" do
-      it "has proper modes" do
+      it "has proper owner" do
         chef_run.template("/etc/init/ttyS1.conf").should be_owned_by("root", "root")
+      end
+
+      it "has proper modes" do
+        m = chef_run.template("/etc/init/ttyS1.conf").mode
+
+        sprintf("%o", m).should == "644"
       end
 
       it "has getty" do
