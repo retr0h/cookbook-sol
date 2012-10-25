@@ -6,13 +6,13 @@ describe "sol::default" do
   describe "custom vendor" do
     before do
       @chef_run = ChefSpec::ChefRunner.new do |node|
-        node['dmi'] = {}
-        node['dmi']['system'] = {}
-        node['dmi']['system']['manufacturer'] = "foo bar"
-        node['sol'] = {}
-        node['sol']['foo-bar'] = {}
-        node['sol']['foo-bar']['grub'] = {}
-        node['sol']['foo-bar']['grub']['hidden_timeout'] = "100"
+        node.set['dmi'] = {}
+        node.set['dmi']['system'] = {}
+        node.set['dmi']['system']['manufacturer'] = "foo bar"
+        node.set['sol'] = {}
+        node.set['sol']['foo-bar'] = {}
+        node.set['sol']['foo-bar']['grub'] = {}
+        node.set['sol']['foo-bar']['grub']['hidden_timeout'] = "100"
       end
       @chef_run.converge "sol::default"
     end
@@ -26,9 +26,9 @@ describe "sol::default" do
   describe "quanta" do
     before do
       @chef_run = ChefSpec::ChefRunner.new do |node|
-        node['dmi'] = {}
-        node['dmi']['system'] = {}
-        node['dmi']['system']['manufacturer'] = "Quanta " # Quanta has a trailing space
+        node.set['dmi'] = {}
+        node.set['dmi']['system'] = {}
+        node.set['dmi']['system']['manufacturer'] = "Quanta " # Quanta has a trailing space
       end
       @chef_run.converge "sol::default"
     end
@@ -76,9 +76,9 @@ describe "sol::default" do
   describe "dell" do
     before do
       @chef_run = ChefSpec::ChefRunner.new do |node|
-        node['dmi'] = {}
-        node['dmi']['system'] = {}
-        node['dmi']['system']['manufacturer'] = "Dell Inc."
+        node.set['dmi'] = {}
+        node.set['dmi']['system'] = {}
+        node.set['dmi']['system']['manufacturer'] = "Dell Inc."
       end
       @chef_run.converge "sol::default"
     end
@@ -126,9 +126,9 @@ describe "sol::default" do
   describe "defaults" do
     before do
       @chef_run = ChefSpec::ChefRunner.new do |node|
-        node['dmi'] = {}
-        node['dmi']['system'] = {}
-        node['dmi']['system']['manufacturer'] = "default"
+        node.set['dmi'] = {}
+        node.set['dmi']['system'] = {}
+        node.set['dmi']['system']['manufacturer'] = "default"
       end
       @chef_run.converge "sol::default"
     end
