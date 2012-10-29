@@ -56,7 +56,7 @@ describe "sol::default" do
 
       it "has getty exec" do
         @chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
-          %Q{exec /sbin/getty -8 38400 ttyS1}
+          %Q{exec /sbin/getty -8 115200 ttyS1}
       end
     end
 
@@ -68,7 +68,7 @@ describe "sol::default" do
 
       it "has GRUB_SERIAL_COMMAND" do
         @chef_run.should create_file_with_content "/etc/default/grub",
-          %Q{GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"}
+          %Q{GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"}
       end
     end
   end
