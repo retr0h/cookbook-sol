@@ -25,9 +25,9 @@ default['sol']['dell-inc']['serial']['speed'] = "115200"
 
 # Tested against IPMI v2.0 compliant KVM on a Quanta S99k.
 
-default['sol']['quanta']['tty']['name'] = "ttyS1"
+default['sol']['quanta']['tty']['name'] = "ttyS1" #COM1 with VT100
 default['sol']['quanta']['serial']['bios_speed'] = "115200"
-default['sol']['quanta']['serial']['speed'] = "38400"
+default['sol']['quanta']['serial']['speed'] = "115200"
 
 # defaults
 
