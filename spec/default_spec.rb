@@ -134,73 +134,90 @@ describe "sol::default" do
     end
 
     describe "ttyS1" do
+      before { @file = "/etc/init/ttyS1.conf" }
+
       it "has proper owner" do
-        @chef_run.template("/etc/init/ttyS1.conf").should be_owned_by("root", "root")
+        @chef_run.template(@file).should be_owned_by("root", "root")
       end
 
       it "has proper modes" do
-        m = @chef_run.template("/etc/init/ttyS1.conf").mode
+        m = @chef_run.template(@file).mode
 
         sprintf("%o", m).should == "644"
       end
 
       it "has getty" do
-        @chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
+        @chef_run.should create_file_with_content @file,
           %Q{ttyS1 - getty}
       end
 
       it "has comment" do
-        @chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
+        @chef_run.should create_file_with_content @file,
           %Q{# This service maintains a getty on ttyS1 from the point the system is}
       end
 
       it "has getty exec" do
-        @chef_run.should create_file_with_content "/etc/init/ttyS1.conf",
+        @chef_run.should create_file_with_content @file,
           %Q{exec /sbin/getty -8 38400 ttyS1}
       end
     end
 
+    describe "executes" do
+      it "update-grub" do
+        @chef_run.should execute_command "update-grub"
+      end
+
+      it "notifies" do
+        pending
+        #resource = [ "setting reboot flag", "ruby_block", "delayed" ]
+        #@chef_run.execute_command.notifies(*resource).should be_true
+      end
+    end
+
     describe "grub" do
+      before { @file = "/etc/default/grub" }
+
       it "has GRUB_CMDLINE_LINUX" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8"}
       end
 
       it "has GRUB_SERIAL_COMMAND" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"}
       end
 
       it "has GRUB_DEFAULT" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_DEFAULT=0}
       end
 
       it "has GRUB_HIDDEN_TIMEOUT" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_HIDDEN_TIMEOUT=0}
       end
 
       it "has GRUB_HIDDEN_TIMEOUT_QUIET" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_HIDDEN_TIMEOUT_QUIET=true}
       end
 
       it "has GRUB_TIMEOUT" do
-        @chef_run.should create_file_with_content "/etc/default/grub",
+        @chef_run.should create_file_with_content @file,
           %Q{GRUB_TIMEOUT=10}
       end
 
-      it "executes update-grub" do
-        @chef_run.should execute_command "update-grub"
-      end
+      it "notifies" do
+        resource = [ "setting reboot flag", "ruby_block", "delayed" ]
 
-      it "flags system to reboot" do
-        #TODO: Still not happy with this
-        @chef_run.resources.find{ |r| r.name == 'setting reboot flag' }.old_run_action(:create)
-
-        @chef_run.node.run_state['reboot'].should be_true
+        @chef_run.template(@file).notifies(*resource).should be_true
       end
+    end
+
+    it "flags system to reboot" do
+      @chef_run.resources.find{ |r| r.name == 'setting reboot flag' }.old_run_action(:create)
+
+      @chef_run.node.run_state['reboot'].should be_true
     end
   end
 end
