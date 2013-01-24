@@ -1,3 +1,4 @@
+name             "sol"
 maintainer       "AT&T Services, Inc."
 maintainer_email "jdewey@att.com"
 license          "All rights reserved"
