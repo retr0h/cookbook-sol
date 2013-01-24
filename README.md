@@ -1,4 +1,6 @@
-description
+[![Build Status](https://travis-ci.org/retr0h/cookbook-sol.png?branch=master)](https://travis-ci.org/retr0h/cookbook-sol)
+
+Description
 ===========
 
 Installs/Configures sol (Serial Over LAN)
