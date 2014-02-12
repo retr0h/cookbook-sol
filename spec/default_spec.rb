@@ -175,17 +175,17 @@ describe 'sol::default' do
         expect(grub_file).to notify('execute[update-grub]').to(:run)
       end
     end
-
-    it 'flags system to reboot' do
-      chef_run.find_resource('ruby_block', 'setting reboot flag')
-        .old_run_action(:create)
-      expect(chef_run.node.run_state['reboot']).to be
-    end
   end
 
   describe 'ruby block' do
     it "doesn't create" do
       expect(chef_run).not_to run_ruby_block 'setting reboot flag'
+    end
+
+    it 'flags system to reboot' do
+      chef_run.find_resource('ruby_block', 'setting reboot flag')
+        .old_run_action(:create)
+      expect(chef_run.node.run_state['reboot']).to be
     end
   end
 
