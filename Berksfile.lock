@@ -1,3 +1,13 @@
-cookbook 'sol', :path => '/home/jdewey/git/cookbook-sol'
-cookbook 'reboot-handler', :locked_version => '0.2.0'
-cookbook 'chef_handler', :locked_version => '1.1.4'
+{
+  "sources": {
+    "sol": {
+      "path": "."
+    },
+    "reboot-handler": {
+      "locked_version": "0.2.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    }
+  }
+}

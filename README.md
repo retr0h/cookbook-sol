@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/retr0h/cookbook-sol.png?branch=master)](https://travis-ci.org/retr0h/cookbook-sol)
+[![Dependency Status](https://gemnasium.com/retr0h/cookbook-sol.png)](https://gemnasium.com/retr0h/cookbook-sol)
 
 Description
 ===========
@@ -86,7 +87,7 @@ License and Author
 
 Author:: John Dewey (<john@dewey.ws>)
 
-Copyright 2012-2013, John Dewey
+Copyright 2012-2014, John Dewey
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
