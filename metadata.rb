@@ -1,13 +1,13 @@
-name             'sol'
-maintainer       'AT&T Services, Inc.'
+name 'sol'
+maintainer 'AT&T Services, Inc.'
 maintainer_email 'jdewey@att.com'
-license          'All rights reserved'
-description      'Installs/Configures sol'
+license 'All rights reserved'
+description 'Installs/Configures sol'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.1'
+version '0.2.1'
 
-recipe           'sol', 'Installs/Configures sol'
+recipe 'sol', 'Installs/Configures sol'
 
-supports         'ubuntu', '= 12.04'
+supports 'ubuntu', '= 12.04'
 
-depends          'reboot-handler'
+depends 'reboot-handler'
