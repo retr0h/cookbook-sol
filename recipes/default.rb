@@ -22,20 +22,15 @@ include_recipe 'reboot-handler'
 
 # Note: /etc/securetty already has entries for ttyS* under Ubuntu.
 
-class Chef::Recipe # rubocop:disable Documentation
-  include SolHelper
-end
-
-class Chef::Resource::Template # rubocop:disable Documentation
-  include SolHelper
-end
+Chef::Recipe.send(:include, SolHelper)
+Chef::Resource::Template.send(:include, SolHelper)
 
 getty = "#{value_for('tty', 'name')}.conf"
 template File.join(node['sol']['tty']['dir'], getty) do
   source 'tty.conf.erb'
-  owner  'root'
-  group  'root'
-  mode   00644
+  owner 'root'
+  group 'root'
+  mode 00644
 
   variables(
     name:  value_for('tty', 'name'),
@@ -59,9 +54,9 @@ end
 
 template node['sol']['grub']['conf'] do
   source 'grub.erb'
-  owner  'root'
-  group  'root'
-  mode   00644
+  owner 'root'
+  group 'root'
+  mode 00644
 
   variables(
     tty_name:                   value_for('tty', 'name'),
