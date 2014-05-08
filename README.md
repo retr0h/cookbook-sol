@@ -13,7 +13,7 @@ To prevent [Yak](http://en.wiktionary.org/wiki/yak_shaving) shaving, only implem
 Requirements
 ============
 
-* Chef 0.8+
+* Chef 11
 * GRUB 2
 
 reboot-handler
@@ -51,7 +51,7 @@ Usage
 
 ```json
 "run_list": [
-    "recipe[curl]"
+    "recipe[sol]"
 ]
 ```
 
