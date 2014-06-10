@@ -3,7 +3,7 @@
 require_relative 'spec_helper'
 
 describe 'sol::default' do
-  before { Chef::Recipe.any_instance.stub(:include_recipe) }
+  before { allow_any_instance_of(Chef::Recipe).to receive(:include_recipe) }
   let(:runner) do
     ChefSpec::Runner.new do |node|
       node.set['dmi']['system']['manufacturer'] = 'foo bar'
