@@ -34,29 +34,29 @@ describe 'sol::default' do
 
       it 'has getty' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(ttyS1 - getty)
+          .with_content 'ttyS1 - getty'
       end
 
       it 'has comment' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(# This service maintains a getty on ttyS1)
+          .with_content '# This service maintains a getty on ttyS1'
       end
 
       it 'has getty exec' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(exec /sbin/getty -8 115200 ttyS1)
+          .with_content 'exec /sbin/getty -8 115200 ttyS1'
       end
     end
 
     describe 'grub' do
       it 'has GRUB_CMDLINE_LINUX' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8") # rubocop:disable LineLength
+          .with_content 'GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8"' # rubocop:disable LineLength
       end
 
       it 'has GRUB_SERIAL_COMMAND' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1") # rubocop:disable LineLength
+          .with_content 'GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"' # rubocop:disable LineLength
       end
     end
   end
@@ -80,29 +80,29 @@ describe 'sol::default' do
 
       it 'has getty' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(ttyS0 - getty)
+          .with_content 'ttyS0 - getty'
       end
 
       it 'has comment' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(# This service maintains a getty on ttyS0)
+          .with_content '# This service maintains a getty on ttyS0'
       end
 
       it 'has getty exec' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(exec /sbin/getty -8 115200 ttyS0)
+          .with_content 'exec /sbin/getty -8 115200 ttyS0'
       end
     end
 
     describe 'grub' do
       it 'has GRUB_CMDLINE_LINUX' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS0,115200n8") # rubocop:disable LineLength
+          .with_content 'GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS0,115200n8"' # rubocop:disable LineLength
       end
 
       it 'has GRUB_SERIAL_COMMAND' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1") # rubocop:disable LineLength
+          .with_content 'GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"' # rubocop:disable LineLength
       end
     end
   end
@@ -126,49 +126,49 @@ describe 'sol::default' do
 
       it 'has getty' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(ttyS1 - getty)
+          .with_content 'ttyS1 - getty'
       end
 
       it 'has comment' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(# This service maintains a getty on ttyS1)
+          .with_content '# This service maintains a getty on ttyS1'
       end
 
       it 'has getty exec' do
         expect(chef_run).to render_file(file.name)
-          .with_content %Q(exec /sbin/getty -8 38400 ttyS1)
+          .with_content 'exec /sbin/getty -8 38400 ttyS1'
       end
     end
 
     describe 'grub' do
       it 'has GRUB_CMDLINE_LINUX' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8") # rubocop:disable LineLength
+          .with_content 'GRUB_CMDLINE_LINUX="text console=tty0 console=ttyS1,115200n8"' # rubocop:disable LineLength
       end
 
       it 'has GRUB_SERIAL_COMMAND' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1") # rubocop:disable LineLength
+          .with_content 'GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"' # rubocop:disable LineLength
       end
 
       it 'has GRUB_DEFAULT' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_DEFAULT=0)
+          .with_content 'GRUB_DEFAULT=0'
       end
 
       it 'has GRUB_HIDDEN_TIMEOUT' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_HIDDEN_TIMEOUT=0)
+          .with_content 'GRUB_HIDDEN_TIMEOUT=0'
       end
 
       it 'has GRUB_HIDDEN_TIMEOUT_QUIET' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_HIDDEN_TIMEOUT_QUIET=true)
+          .with_content 'GRUB_HIDDEN_TIMEOUT_QUIET=true'
       end
 
       it 'has GRUB_TIMEOUT' do
         expect(chef_run).to render_file(grub_file.name)
-          .with_content %Q(GRUB_TIMEOUT=10)
+          .with_content 'GRUB_TIMEOUT=10'
       end
 
       it 'notifies' do
