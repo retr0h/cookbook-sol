@@ -29,11 +29,12 @@ module SolHelper # rubocop:disable Documentation
       .downcase
   end
 
-  def value_for(type, value)
+  def vendor_specific_value(type, value)
     vendor_specific = node['sol'][manufacturer] if node['sol'][manufacturer]
+    vendor_specific && vendor_specific[type] && vendor_specific[type][value]
+  end
 
-    ((vendor_specific &&
-      vendor_specific[type] &&
-      vendor_specific[type][value]) || node['sol'][type][value])
+  def value_for(type, value)
+    vendor_specific_value(type, value) || node['sol'][type][value]
   end
 end
