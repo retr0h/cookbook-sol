@@ -5,7 +5,7 @@ require_relative 'spec_helper'
 describe 'sol::default' do
   before { allow_any_instance_of(Chef::Recipe).to receive(:include_recipe) }
   let(:runner) do
-    ChefSpec::Runner.new do |node|
+    ChefSpec::ServerRunner.new do |node|
       node.set['dmi']['system']['manufacturer'] = 'foo bar'
       node.set['sol']['foo-bar']['grub']['hidden_timeout'] = '100'
     end
