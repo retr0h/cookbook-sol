@@ -14,7 +14,8 @@ To prevent [Yak](http://en.wiktionary.org/wiki/yak_shaving) shaving, only implem
 Requirements
 ============
 
-* Chef 0.8+
+* Chef 12
+* Ruby 2.1.0/2.2.0
 * GRUB 2
 
 reboot-handler
