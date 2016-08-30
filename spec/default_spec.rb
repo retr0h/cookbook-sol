@@ -5,9 +5,9 @@ require_relative 'spec_helper'
 describe 'sol::default' do
   before { allow_any_instance_of(Chef::Recipe).to receive(:include_recipe) }
   let(:runner) do
-    ChefSpec::ServerRunner.new do |node|
-      node.set['dmi']['system']['manufacturer'] = 'foo bar'
-      node.set['sol']['foo-bar']['grub']['hidden_timeout'] = '100'
+    ChefSpec::SoloRunner.new do |node|
+      node.override['dmi']['system']['manufacturer'] = 'foo bar'
+      node.override['sol']['foo-bar']['grub']['hidden_timeout'] = '100'
     end
   end
   let(:node) { runner.node }
@@ -17,7 +17,7 @@ describe 'sol::default' do
   context 'quanta vendor' do
     before do
       # Quanta has a trailing space
-      node.set['dmi']['system']['manufacturer'] = 'Quanta '
+      node.override['dmi']['system']['manufacturer'] = 'Quanta '
     end
 
     describe 'ttyS1' do
@@ -63,7 +63,7 @@ describe 'sol::default' do
 
   context 'dell vendor' do
     before do
-      node.set['dmi']['system']['manufacturer'] = 'Dell Inc.'
+      node.override['dmi']['system']['manufacturer'] = 'Dell Inc.'
     end
 
     describe 'ttyS0' do
@@ -109,7 +109,7 @@ describe 'sol::default' do
 
   context 'default' do
     before do
-      node.set['dmi']['system']['manufacturer'] = 'default'
+      node.override['dmi']['system']['manufacturer'] = 'default'
     end
 
     describe 'ttyS1' do
@@ -184,7 +184,7 @@ describe 'sol::default' do
 
     it 'flags system to reboot' do
       chef_run.find_resource('ruby_block', 'setting reboot flag')
-        .old_run_action(:create)
+              .old_run_action(:create)
       expect(chef_run.node.run_state['reboot']).to be
     end
   end
