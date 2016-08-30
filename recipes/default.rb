@@ -30,7 +30,7 @@ template File.join(node['sol']['tty']['dir'], getty) do
   source 'tty.conf.erb'
   owner 'root'
   group 'root'
-  mode 00644
+  mode 0o644
 
   variables(
     name:  value_for('tty', 'name'),
@@ -56,7 +56,7 @@ template node['sol']['grub']['conf'] do
   source 'grub.erb'
   owner 'root'
   group 'root'
-  mode 00644
+  mode 0o644
 
   variables(
     tty_name:                   value_for('tty', 'name'),
